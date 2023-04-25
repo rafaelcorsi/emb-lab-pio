@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Install cppcheck 
         run: |
-          apt install cppcheck
+          sudo apt install cppcheck
       - name: Check
         run: |
           cppcheck --enable=all --suppress=missingIncludeSyste --error-exitcode=2 -iASF -ioled -iconfig .
