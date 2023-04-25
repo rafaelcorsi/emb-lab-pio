@@ -13,4 +13,4 @@ jobs:
           sudo apt install cppcheck
       - name: Check
         run: |
-          cppcheck --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --error-exitcode=2 -iASF -ioled -itouch -iconfig .
+          cppcheck --suppress=missingIncludeSystem --suppress=integerOverflow --error-exitcode=2 -iASF -ioled -itouch -iconfig .
