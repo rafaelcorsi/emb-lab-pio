@@ -18,7 +18,7 @@ jobs:
       - name: Install firmware-best-practice-checker 
         run: |
           git clone https://github.com/insper-education/firmware-best-practice-checker
-          sudo pip3 install tabulate 
+          sudo pip3 install python-tabulate 
           
       - name: run cppcheck
         run: |
