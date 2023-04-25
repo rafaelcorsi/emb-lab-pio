@@ -1,7 +1,7 @@
 name: Cppcheck 
 run-name: Cppcheck is testing your code for static failures
 on: [push]
-
+permissions: write-all
 jobs:
   Cppcheck:
     runs-on: ubuntu-latest
@@ -13,4 +13,4 @@ jobs:
           sudo apt install cppcheck
       - name: Check
         run: |
-          cppcheck --suppress=missingIncludeSystem --suppress=integerOverflow --error-exitcode=2 -iASF -ioled -itouch -iconfig .
+          cppcheck -iASF -ioled --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --suppress=unmatchedSuppression --error-exitcode=2 --dump .
