@@ -1,6 +1,12 @@
 name: cppcheck
+
 run-name: Cppcheck
+
 on: [push]
+
+env:
+  SRC_CODE: src/main.c
+
 jobs:
   cppcheck:
     runs-on: ubuntu-latest
@@ -16,4 +22,4 @@ jobs:
 
       - name: run cppcheck
         run: |
-          cppcheck -iASF -ioled --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --suppress=unmatchedSuppression --error-exitcode=2
+          cppcheck -iASF -ioled --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --suppress=unmatchedSuppression --error-exitcode=2 ${SRC_CODE}

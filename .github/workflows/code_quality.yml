@@ -1,6 +1,12 @@
 name: Code Quality
+
 run-name: Checking code quality
+
 on: [push]
+
+env:
+  SRC_CODE: src/main.c
+
 jobs:
   rules_basic_variable:
     runs-on: ubuntu-latest
@@ -22,8 +28,8 @@ jobs:
 
       - name: run cppcheck
         run: |
-          cppcheck -iASF -ioled --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --suppress=unmatchedSuppression --dump main.c
+          cppcheck -iASF -ioled --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --suppress=unmatchedSuppression --dump ${SRC_CODE}
 
       - name: run firmware-best-practice-cheker
         run: |
-          python3 checker/check.py main.c.dump
+          python3 checker/check.py ${SRC_CODE}.dump
