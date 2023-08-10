@@ -1,0 +1,19 @@
+name: cppcheck
+run-name: Cppcheck
+on: [push]
+jobs:
+  cppcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install cppcheck
+        run: |
+          sudo apt install cppcheck
+
+      - name: run cppcheck
+        run: |
+          cppcheck -iASF -ioled --enable=all --suppress=missingIncludeSystem --suppress=integerOverflow --suppress=unmatchedSuppression --error-exitcode=2
